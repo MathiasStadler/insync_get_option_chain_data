@@ -23,6 +23,7 @@ def get_open_positions():
             'Fees': position.avgCost * position.position,  # Example calculation for fees
             'Open': position.position,
             'Profit/Loss': position.position * (market_data.last - position.avgCost),
+            'exchange':'SMART',
             'Expiration Date': contract.lastTradeDateOrContractMonth if hasattr(contract, 'lastTradeDateOrContractMonth') else None
         }
         open_positions_data.append(data)
