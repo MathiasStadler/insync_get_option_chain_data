@@ -3,6 +3,7 @@
 
 
 from ib_insync import *
+from ibapi.common import TickerId, SetOfFloat, SetOfString, MarketDataTypeEnum
 
 ib=IB()
 
@@ -12,14 +13,23 @@ ib.connect(
     clientId=69
 )
 
-position_list = ib.positions()
+ib.reqMarketDataType(MarketDataTypeEnum.DELAYED)
 
-def extract_symbols(position_list):
-    symbols =[position.contract.symbol for position in position_list]
-    return " and ".join(symbols)
+# position_list = ib.positions()
 
-result = extract_symbols(position_list)
+positions = ib.positions()
 
-print(result)
+for position in positions:
+        contract = position.contract
+        market_data = ib.reqMktData(contract)
+        print("Market Data {}".format(market_data))
+        ib.sleep(1)  # Allow time for market data to be received
+        # print(contract.localSymbol)
+
+
+
+# result = extract_symbols(position_list)
+
+# print(result)
 
 ib.disconnect()

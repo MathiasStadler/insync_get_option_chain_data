@@ -3,7 +3,7 @@ from ibapi.common import TickerId, SetOfFloat, SetOfString, MarketDataTypeEnum
 
 # Connect to the IB paper trading account
 ib = IB()
-ib.connect('127.0.0.1', 7496, clientId=30)
+ib.connect('127.0.0.1', 7496, clientId=33)
 ib.reqMarketDataType(MarketDataTypeEnum.DELAYED)
 
 # Function to get open positions
@@ -23,7 +23,7 @@ def get_open_positions():
             'Fees': position.avgCost * position.position,  # Example calculation for fees
             'Open': position.position,
             'Profit/Loss': position.position * (market_data.last - position.avgCost),
-            'exchange':'SMART',
+            'Exchange':"SMART",
             'Expiration Date': contract.lastTradeDateOrContractMonth if hasattr(contract, 'lastTradeDateOrContractMonth') else None
         }
         open_positions_data.append(data)
