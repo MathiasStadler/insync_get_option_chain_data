@@ -18,6 +18,16 @@ Linux debian 6.1.0-28-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.119-1 (2024-11-22)
 python3 --version
 Python 3.11.2
 ```
+
+# upgrade all installed packages
+
+## -U, --upgrade               Upgrade all specified packages to the newest available version. The handling of dependencies depends on the upgrade-strategy used.
+
+```bash
+# -U, --upgrade               Upgrade all specified packages to the newest available version. The handling of dependencies depends on the upgrade-strategy used.
+pip --upgrade <packages>
+```
+
 # create python venv
 
 [install venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
@@ -38,9 +48,13 @@ source .venv//bin/activate
 deactivate
 ```
 
-## install packages for these project inside .venv
+## install/upgrade  packages for these project inside .venv
+
+> we are install both package ib_insync and ib_async
 
 ```bash
+pip3 install ib_async
+pip3 install --upgrade ib_async
 pip3 install ib_insync
-
+pip3 install --upgrade ib_insync
 ```
